@@ -1,5 +1,6 @@
 import '../scss/styles.scss';
 import './libs.js';
+import { handleFilterChange } from './modules/handleCargoFilter.js';
 import { handleClearTable } from './modules/handleClearTable.js';
 import { handleFormSubmit } from './modules/handleFormSubmit.js';
 import { initCalendar } from './modules/initCalendar.js';
@@ -16,5 +17,6 @@ document.addEventListener('DOMContentLoaded', function () {
   cargoStore.subscribe(renderTable);
   renderTable();
   handleClearTable();
+  handleFilterChange();
 });
 

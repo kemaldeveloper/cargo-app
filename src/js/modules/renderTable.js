@@ -1,16 +1,26 @@
 import { statuses } from '../consts/consts';
 import { cargoStore } from '../stores/cargoStore';
+import { filterCargoList } from './handleCargoFilter';
 import { handleStatusChange } from './handleStatusChange';
 
 export const renderTable = () => {
   const { cargoList } = cargoStore.getState();
-
+  const statusFilter = document.getElementById('statusFilter').value;
   const table = document.getElementById('cargoTable');
   const tbody = table.querySelector('tbody');
+  const clearBtn = document.getElementById('openCLearTableModalBtn');
+
+  const filteredCargoList = filterCargoList(cargoList, statusFilter);
 
   tbody.innerHTML = '';
 
-  cargoList.forEach(cargo => {
+  if (filteredCargoList.length === 0) {
+    clearBtn.style.display = 'none';
+  } else {
+    clearBtn.style.display = 'block';
+  }
+
+  filteredCargoList.forEach(cargo => {
     const row = document.createElement('tr');
 
     let badgeClass = '';

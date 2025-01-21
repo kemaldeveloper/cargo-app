@@ -1,10 +1,12 @@
 import { Modal } from 'bootstrap';
+import { toggleLoading } from '../helpers/toggleLoading';
 import { cargoStore } from '../stores/cargoStore';
 
 const cargoModal = new Modal(document.getElementById('addCargoModal'));
 
 export const handleFormSubmit = () => {
-  document.querySelector('#addCargoForm').addEventListener('submit', e => {
+  const cargoForm = document.querySelector('#addCargoForm');
+  cargoForm.addEventListener('submit', e => {
     e.preventDefault();
     const form = e.target;
 
@@ -32,10 +34,12 @@ export const handleFormSubmit = () => {
 
     form.reset();
     form.classList.remove('was-validated');
-    cargoModal._dialog.children[0].classList.add('loading');
+
+    const modalContent = document.querySelector('#addCargoModal .modal-content');
+    toggleLoading(modalContent, true);
     setTimeout(() => {
       cargoModal.hide();
-      cargoModal._dialog.children[0].classList.remove('loading');
+      toggleLoading(modalContent, false);
     }, 1000);
   });
 };

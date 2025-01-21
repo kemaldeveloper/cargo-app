@@ -13,8 +13,22 @@
         <section>
           <div class="container">
             <div class="row mb-5">
-              <div class="col-12 d-flex justify-content-end">
-                <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#addCargoModal" id="addCargoBtn">Добавить груз</button>
+              <div class="col-12 d-flex justify-content-between">
+                <div class="row">
+                  <div class="col">
+                    <select class="form-select" name="status" id="statusFilter" required>
+                      <option value="">Выберите статус</option>
+                      <option value="pending">Ожидает отправки</option>
+                      <option value="onTheWay">В пути</option>
+                      <option value="delivered">Доставлен</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#addCargoModal" id="addCargoBtn">Добавить груз</button>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -34,7 +48,7 @@
 
             <div class="row">
               <div class="col-12 d-flex justify-content-end">
-                <button type="button" class="btn btn-outline-danger" id="clearTable">Очитстить таблицу</button>
+                <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#clearTableModal" id="openCLearTableModalBtn">Очитстить таблицу</button>
               </div>
             </div>
           </div>
@@ -42,11 +56,11 @@
       </main>
       <footer class="footer"></footer>
 
-      <div class="modal fade" id="addCargoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal fade" id="addCargoModal" tabindex="-1" aria-labelledby="addCargoModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-xl">
           <div class="modal-content">
             <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">Добавьте груз</h1>
+              <h1 class="modal-title fs-5" id="addCargoModalLabel">Очистка таблицы</h1>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -84,6 +98,30 @@
                   <button type="submit" class="btn btn-outline-success" id="saveCargo">Сохранить</button>
                 </div>
               </form>
+            </div>
+            <div class="loader position-absolute top-50 start-50 translate-middle" style="z-index: 1">
+              <div class="spinner-border text-info" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="clearTableModal" tabindex="-1" aria-labelledby="clearTableModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="clearTableModalLabel">Добавьте груз</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p>Вы действительно уверены что хотите очистить таблицу?</p>
+              <p>После удаление утерянные данные не вернуть!</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+              <button type="button" class="btn btn-danger" id="clearTableBtn">Удалить</button>
             </div>
             <div class="loader position-absolute top-50 start-50 translate-middle" style="z-index: 1">
               <div class="spinner-border text-info" role="status">
