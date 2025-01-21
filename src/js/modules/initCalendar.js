@@ -6,6 +6,7 @@ export const initCalendar = () => {
     positionToInput: 'auto',
     onChangeToInput(self) {
       if (!self.context.inputElement) return;
+
       if (self.context.selectedDates[0]) {
         self.context.inputElement.value = self.context.selectedDates[0];
         self.hide();
