@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
+  <body data-bs-theme="dark">
+    <div id="app">
+      <header class="header"></header>
+      <main class="main pt-5">
+        <section>
+          <div class="container">
+            <div class="row mb-5">
+              <div class="col-12 d-flex justify-content-end">
+                <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal" id="addCargoBtn">Добавить груз</button>
+              </div>
+            </div>
+
+            <table class="table table-striped table-bordered" id="cargoTable">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Название груза</th>
+                  <th>Статус</th>
+                  <th>Пункт отправления и назначения</th>
+                  <th>Дата отправления</th>
+                  <th>Изменить статус</th>
+                </tr>
+              </thead>
+              <tbody class="table-group-divider">
+                <!-- <tr>
+                  <td>1</td>
+                  <td>Строительные материалы</td>
+                  <td>
+                    <span class="badge rounded-pill text-bg-info">В пути</span>
+                  </td>
+                  <td>Москва -> Казань</td>
+                  <td>2024-11-24</td>
+                  <td>
+                    <select class="form-select" name="statuses">
+                      <option value="onTheWay">В пути</option>
+                      <option value="pending">Ожидает отправки</option>
+                      <option value="delivered">Доставлен</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Хрупкий груз</td>
+                  <td>
+                    <span class="badge rounded-pill text-bg-warning">Ожидает отправки</span>
+                  </td>
+                  <td>Санкт-Петербург -> Екатеринбург</td>
+                  <td>2024-11-24</td>
+                  <td>
+                    <select class="form-select" name="statuses">
+                      <option value="pending">Ожидает отправки</option>
+                      <option value="onTheWay">В пути</option>
+                      <option value="delivered">Доставлен</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>Зеркала</td>
+                  <td>
+                    <span class="badge rounded-pill text-bg-success">Доставлен</span>
+                  </td>
+                  <td>Санкт-Петербург -> Екатеринбург</td>
+                  <td>2024-11-24</td>
+                  <td>
+                    <select class="form-select" name="statuses">
+                      <option value="delivered">Доставлен</option>
+                      <option value="pending">Ожидает отправки</option>
+                      <option value="onTheWay">В пути</option>
+                    </select>
+                  </td>
+                </tr> -->
+              </tbody>
+              <tfoot></tfoot>
+            </table>
+
+            <div class="row">
+              <div class="col-12 d-flex justify-content-end">
+                <button type="button" class="btn btn-outline-danger" id="clearTable">Очитстить таблицу</button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer class="footer"></footer>
+
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Добавьте груз</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form id="addCargoForm" class="row g-3 mb-5" novalidate>
+                <div class="col-md-12">
+                  <label for="cargoName" class="form-label">Название груза</label>
+                  <input class="form-control" name="name" type="text" id="cargoName" required />
+                </div>
+                <div class="col-md-6">
+                  <label for="originState" class="form-label">Пункт отправления</label>
+                  <select id="originState" name="origin" class="form-select" required></select>
+                </div>
+                <div class="col-md-6">
+                  <label for="destinationState" class="form-label">Пункт назначения</label>
+                  <select id="destinationState" name="destination" class="form-select" required></select>
+                </div>
+                <div class="col-md-6">
+                  <label for="setStatus" class="form-label">Выберите статус</label>
+                  <select class="form-select" name="status" id="setStatus" required>
+                    <option value="pending">Ожидает отправки</option>
+                    <option value="onTheWay">В пути</option>
+                    <option value="delivered">Доставлен</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <label for="" class="form-label">Выберите дату</label>
+                  <input id="calendar" name="departureDate" type="text" class="form-control" required />
+                </div>
+                <div class="col-12 d-flex justify-content-end">
+                  <button type="submit" class="btn btn-outline-success" id="saveCargo">Сохранить</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/src/js/main.js"></script>
+  </body>
+</html>
+
