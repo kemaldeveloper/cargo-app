@@ -14,7 +14,7 @@
           <div class="container">
             <div class="row mb-5">
               <div class="col-12 d-flex justify-content-end">
-                <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal" id="addCargoBtn">Добавить груз</button>
+                <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#addCargoModal" id="addCargoBtn">Добавить груз</button>
               </div>
             </div>
 
@@ -29,57 +29,7 @@
                   <th>Изменить статус</th>
                 </tr>
               </thead>
-              <tbody class="table-group-divider">
-                <!-- <tr>
-                  <td>1</td>
-                  <td>Строительные материалы</td>
-                  <td>
-                    <span class="badge rounded-pill text-bg-info">В пути</span>
-                  </td>
-                  <td>Москва -> Казань</td>
-                  <td>2024-11-24</td>
-                  <td>
-                    <select class="form-select" name="statuses">
-                      <option value="onTheWay">В пути</option>
-                      <option value="pending">Ожидает отправки</option>
-                      <option value="delivered">Доставлен</option>
-                    </select>
-                  </td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Хрупкий груз</td>
-                  <td>
-                    <span class="badge rounded-pill text-bg-warning">Ожидает отправки</span>
-                  </td>
-                  <td>Санкт-Петербург -> Екатеринбург</td>
-                  <td>2024-11-24</td>
-                  <td>
-                    <select class="form-select" name="statuses">
-                      <option value="pending">Ожидает отправки</option>
-                      <option value="onTheWay">В пути</option>
-                      <option value="delivered">Доставлен</option>
-                    </select>
-                  </td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>Зеркала</td>
-                  <td>
-                    <span class="badge rounded-pill text-bg-success">Доставлен</span>
-                  </td>
-                  <td>Санкт-Петербург -> Екатеринбург</td>
-                  <td>2024-11-24</td>
-                  <td>
-                    <select class="form-select" name="statuses">
-                      <option value="delivered">Доставлен</option>
-                      <option value="pending">Ожидает отправки</option>
-                      <option value="onTheWay">В пути</option>
-                    </select>
-                  </td>
-                </tr> -->
-              </tbody>
-              <tfoot></tfoot>
+              <tbody class="table-group-divider"></tbody>
             </table>
 
             <div class="row">
@@ -92,7 +42,7 @@
       </main>
       <footer class="footer"></footer>
 
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal fade" id="addCargoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-xl">
           <div class="modal-content">
             <div class="modal-header">
@@ -104,14 +54,22 @@
                 <div class="col-md-12">
                   <label for="cargoName" class="form-label">Название груза</label>
                   <input class="form-control" name="name" type="text" id="cargoName" required />
+                  <div class="invalid-feedback">Пожалуйста, введите название груза.</div>
                 </div>
                 <div class="col-md-6">
                   <label for="originState" class="form-label">Пункт отправления</label>
                   <select id="originState" name="origin" class="form-select" required></select>
+                  <div class="invalid-feedback">Пожалуйста, укажите пункт отправления.</div>
                 </div>
                 <div class="col-md-6">
                   <label for="destinationState" class="form-label">Пункт назначения</label>
                   <select id="destinationState" name="destination" class="form-select" required></select>
+                  <div class="invalid-feedback">Пожалуйста, укажите пункт назначения.</div>
+                </div>
+                <div class="col-md-6">
+                  <label for="calendar" class="form-label">Выберите дату</label>
+                  <input id="calendar" name="departureDate" type="text" class="form-control" autocomplete="off" required />
+                  <div class="invalid-feedback">Пожалуйста, выберите дату отправления.</div>
                 </div>
                 <div class="col-md-6">
                   <label for="setStatus" class="form-label">Выберите статус</label>
@@ -121,14 +79,16 @@
                     <option value="delivered">Доставлен</option>
                   </select>
                 </div>
-                <div class="col-md-6">
-                  <label for="" class="form-label">Выберите дату</label>
-                  <input id="calendar" name="departureDate" type="text" class="form-control" required />
-                </div>
+
                 <div class="col-12 d-flex justify-content-end">
                   <button type="submit" class="btn btn-outline-success" id="saveCargo">Сохранить</button>
                 </div>
               </form>
+            </div>
+            <div class="loader position-absolute top-50 start-50 translate-middle" style="z-index: 1">
+              <div class="spinner-border text-info" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
             </div>
           </div>
         </div>

@@ -1,4 +1,7 @@
+import { Modal } from 'bootstrap';
 import { cargoStore } from '../stores/cargoStore';
+
+const cargoModal = new Modal(document.getElementById('addCargoModal'));
 
 export const handleFormSubmit = () => {
   document.querySelector('#addCargoForm').addEventListener('submit', e => {
@@ -29,5 +32,10 @@ export const handleFormSubmit = () => {
 
     form.reset();
     form.classList.remove('was-validated');
+    cargoModal._dialog.children[0].classList.add('loading');
+    setTimeout(() => {
+      cargoModal.hide();
+      cargoModal._dialog.children[0].classList.remove('loading');
+    }, 1000);
   });
 };

@@ -1,5 +1,5 @@
 export const statuses = {
-  onTheWay: 'В пути',
   pending: 'Ожидает отправки',
+  onTheWay: 'В пути',
   delivered: 'Доставлен',
 };

@@ -13,10 +13,25 @@ export const renderTable = () => {
   cargoList.forEach(cargo => {
     const row = document.createElement('tr');
 
+    let badgeClass = '';
+    switch (cargo.status) {
+      case 'В пути':
+        badgeClass = 'text-bg-info';
+        break;
+      case 'Ожидает отправки':
+        badgeClass = 'text-bg-warning';
+        break;
+      case 'Доставлен':
+        badgeClass = 'text-bg-success';
+        break;
+      default:
+        badgeClass = 'text-bg-secondary';
+    }
+
     row.innerHTML = ` 
     <td>${cargo.id}</td>
     <td>${cargo.name}</td>
-    <td>${cargo.status}</td>
+    <td><span class="badge ${badgeClass}">${cargo.status}</span></td>
     <td>${cargo.origin} -> ${cargo.destination}</td>
     <td>${cargo.departureDate}</td>
     <td>

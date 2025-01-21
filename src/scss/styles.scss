@@ -7,7 +7,8 @@
 @import "bootstrap/scss/mixins";
 @import "bootstrap/scss/root";
 
-@import "bootstrap/scss/utilities";
+// @import "bootstrap/scss/utilities";
+@import "bootstrap/scss/bootstrap-utilities";
 @import "bootstrap/scss/bootstrap-reboot";
 @import "bootstrap/scss/bootstrap-grid";
 @import "bootstrap/scss/tables";
@@ -17,6 +18,9 @@
 @import "bootstrap/scss/buttons";
 @import "bootstrap/scss/modal";
 @import "bootstrap/scss/close";
+@import "bootstrap/scss/spinners";
+
+// @import "bootstrap/scss/utilities/api";
 
 @import "vanilla-calendar-pro/styles/layout.css"; // Только скелет
 @import "vanilla-calendar-pro/styles/themes/light.css"; // Светлая тема
