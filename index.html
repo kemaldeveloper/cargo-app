@@ -66,6 +66,9 @@
             <div class="modal-body">
               <form id="addCargoForm" class="row g-3 mb-5" novalidate>
                 <div class="col-md-12">
+                  <div id="formError" class="alert alert-danger" style="display: none"></div>
+                </div>
+                <div class="col-md-12">
                   <label for="cargoName" class="form-label">Название груза</label>
                   <input class="form-control" name="name" type="text" id="cargoName" required />
                   <div class="invalid-feedback">Пожалуйста, введите название груза.</div>
